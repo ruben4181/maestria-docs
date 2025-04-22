@@ -43,20 +43,25 @@ El diseño del proceso cuenta con la selección de atributos, para no cargar el 
 Para estas condiciones se obtuvieron como resultado una proporción a primera vista diferente, entre los dos grupos de usuarios con plan internacional, es decir, los que se cambiaron y los que no. Con un total de 323 usuarios con plan internacional, un porcentaje de 42.41% de usuarios que con plan internacional se cambiaron de operador y un 57.59% restante de usuarios que con plan internacional no se cambiaron de operador. Los totales los podemos apreciar en la *Figura 3.1.1* y en la *Figura 3.1.2*, siendo la *Figura 3.1.2* la que más permite apreciar la diferencia entre ambas.
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/intern_plan_1_table.png?raw=true)
 *Figura 3.1.1*
+
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/intern_plan_1_bar.png?raw=true)
 *Figura 3.1.2*
+
 **Intern Plan = 0 (Usuarios sin plan internacional) **
 En el caso de los usuarios sin plan internacional, la variación de un grupo con otro es mucho mayor con respecto a los usuarios con plan internacional. Los usuarios sin plan internacional, que corresponde a un total de 3010, que no se cambiaron son, aproximadamente 88.50%, mientras que los que si se cambiaron representan el 11.50% restante. La *Figura 3.1.3* y *Figura 3.1.4* ilustran esta relación. 
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/inter_plan_0_table.png?raw=true)
 *Figura 3.1.3*
+
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/inter_plan_0_bar.png?raw=true)
 *Figura 3.1.4*
+
 **Conclusiones:**
 Lo primero que se puede concluir de este análisis exploratorio, es que el dataset presenta un desbalance entre usuarios con Churn y sin Churn, esto puede ser porque este fenómeno no es muy común, aunque si significativo. Ahora bien, también es evidente que hay una mayor cantidad de usuarios, en proporción, que teniendo plan internacional, toman la decisión de cambiarse de operador, que las que no tienen dicho plan (**42.41%** vs **11.50%**)
 
 4) Para los puntos 4, 5 y 6 se asumirá que la distribución de las variables, individualmente tiene una distribución normal y así poder usar la matriz de correlación como herramienta de apoyo. La matriz de correlación se puede apreciar en en la *Figura 4.1*. Correspondiente al punto 4, que intenta descifrar si existe una correlación entre la cantidad de llamadas y Churn, se observa que existe una correlación de 0.209 entre *CutServ Call* y *Churn*, lo que, de acuerdo a lo comúnmente aceptado en la literatura estadística, es una correlación positiva debía, es decir, existe algo de correlación entre las dos variables, pero no la suficiente como para tenerla en cuenta. Sin embargo, esto no implica que esta variable, en conjunto con otras, no representen una correlación moderada o fuerte. El proceso usado para los puntos 1.4, 1.5 y 1.6 está en la *Figura 4.2*
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_4_1.png?raw=true)
 *Figura 4.1: Matriz de correlación variables puntos 1.4, 1.5 y 1.6*
+
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_4_2.png?raw=true)
 *Figura 4.2: Proceso generación de matriz de correlación puntos 1.4, 1.5 y 1.6*
 
