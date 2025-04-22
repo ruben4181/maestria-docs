@@ -27,8 +27,9 @@ Consecuentemente, se normalizan las columnas no categóricas, que vendrían sien
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_0_2.png?raw=true)
 *Figura 1.2*
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_0_3.png?raw=true)
-*Figura 1.3*
+
 2) De los campos posibles a ser eliminados, se tomó la decisión de solamente eliminar el campo teléfono, por el hecho de que es de origen arbitrario y no aporta información de la condición o de los hábitos de consumo del cliente. En su momento se considero eliminar variables correlacionadas directamente, como por ejemplo la cantidad de llamadas en el transcurso del día y/o el cargo por el uso de estos, sin embargo, no fueron eliminados porque se consideró que los usuarios podrían cambiarse de operador porque sus precios alcanzaban algún tope o que los usuarios que más llaman, en zonas donde la cobertura presenta algún tipo de problema por concurrencia, etc..., serían más notorios para usuarios más frecuentes, que para usuarios más casuales.
+
 3) Se seleccionan los atributos Churn e Intern Plan, además de la conversión de Churn, de nominal a numéricos, reemplazando TRUE por 1 y FALSE por 0, para después filtrar todo el dataset en las cuatro posibles combinaciones requeridas en este literal, que son las siguientes con sus respectivos resultados.
 * Inter Plan = 1 AND Churn = 1 (Usuario con plan internacional y que se cambió de operador).
 * Inter Plan = 1 AND Churn = 0 (Usuario con plan internacional que NO se cambió de operador)
@@ -68,10 +69,13 @@ Lo primero que se puede concluir de este análisis exploratorio, es que el datas
 8) Resumén de hallazgos *Figura 8.1*
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_8_1.png?raw=true)
 *Figura 8.1*
+
 9) No se realiza el punto
+
 10) Analizando como afectan De acuerdo a la *Figura 10.1* y teniendo en cuenta que el conjunto de datos **esta desbalanceado con más usuarios que NO hicieron *Churn***, se aprecia que después de la cuarta llamada hay más puntos verdes que azules, lo que indica que si hay un patrón con esa variable y *Churn*, también que después de la 4ta llamada los minutos de los usuarios se vieron afectados disminuyendo. Sin embargo, en conjunto no pareciese que afectan directamente, dado que en las primeras 3 llamadas también hubo muchos puntos verdes (Usuarios que cambiaron de proveedor). Como conclusión, después de la 4ta llamada existe un patrón, pero para nada es concluyente, porque el *Churn* se presenta en todas las étapas de los usuarios que llaman al servicio de cliente y también cuando hay más o menos minutos durante el día.
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_10_1.png?raw=true)
 *Figura 10.1*
+
 11) En este par de variables (*Total day minutes* y *Total evening min*) los valores están dispersos sin presentar clusters de puntos evidentes para ninguno de los dos colores (*Churn*). Cuando crecen los minutos en el día y los minutos en la tarde, hay más puntos verdes, pero también muchos azules (NO *Churn*). Como conclusión, más hacia la derecha y hacia arriba parece que existe un cluster de puntos, pero no es una afirmación trivial el decir que existe en esa zona una agrupación de puntos de algún color.
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_11_1.png?raw=true)
 *Figura 11.1*
@@ -80,20 +84,22 @@ Lo primero que se puede concluir de este análisis exploratorio, es que el datas
 Se realiza el diseño de un árbol de decisiones, con las variables seleccionadas, sin normalizar, dado que este tipo de modelos no requiere que los valores estén normalizados y no afectan su desempeño. Fue entrenado con una muestra balanceada de 400 elementos por cada clase (*Churn* = TRUE, *Churn* = FALSE) Los resultados en las métricas de rendimiento del módelo están representados en la *Figura 12.1*, el árbol de decisión generado está en la *Figura 12.2* y los diseños están en las figuras 12.3 y 12.4.
 
 12) ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_1.png?raw=true)
-
 *Figura 12.1: Métricas Árbol de decisiones*
+
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_2.png?raw=true)
 *Figura 12.2: Árbol de decisión generado en RapidMiner*
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_3.png?raw=true)
 *Figura 12.3: Diseño implementación RapidMiner Árbol de decisión*
+
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_4.png?raw=true)
 *Figure 12.4: Diseño subproceso Cross Validation - Árbol de decisiones*
 
 Al balancear el conjunto de datos con un 50% y 50% para ambas clases, usando una medida de Performance Binomial, se obtuvieron unos resultados bastante aceptables. El *class-precision* que ayuda a medir que las predicciones sean buena calidad y, para ejemplos de este problema en cuestión, no tomar la decisión de darle beneficios a usuarios que no se iban a ir, tuvo un rendimiento para ambas clases de más de 75%, como se observa en la *Figura 12.1*. Ahora bien, la otra métrica que aporta información de usuarios que piensan abandonar el operado, *class-recall*, entregó un rendimiento también de más de más de 75% en ambas clases. Si bien el rendimiento de la clase de más relevancia (*Churn = TRUE*) son las de menor porcentaje, siguen estando por encima de 75%, que es muy buena de acuerdo a la literatura.
 **Comparación con anterior sección:** Si bien en el punto anterior se determinó que las variables no tenían una correlación directa, ninguna, con el label *Churn*, al balancear las clases el Árbol de decisión encontró caminos que dieron buenos resultados, lo que nos implica que el desbalanceo pudo haber jugado un papel determinante en el resultado final del Análisis exploratorio, y que tal vez si se hubiesen balanceado las clases antes de hacer el análisis exploratorio, hubiese sido más evidente la relación de los atributos con el atributo objetivo o *label*.
+
 13) Las métricas por defecto que trae el operador *Performance* en RapidMiner, presentes en la tabla de la *Figura 12.1* son bastante útiles en este caso, porque tienen la medición general del modelo, el *class-recall* y *class-precision* de este mismo. El *class-recall* es de vital importancia en este modelo porque las personas que se van, son un grupo minoritario en el *dataset*, además, son las que más importan en este proceso porque son usuarios potencialmente perdibles para la empresa y, no solo eso, que se van directamente a la competencia, lo que es un doble problema. Perder esta cuota de mercado puede siginificar perdida de recursos importantes y la detección correcta de la clase minoritaria, pero de mayor relevancia, la representa muy bien la métrica *class-recall*(falsos negativos). Por otra parte, el class-precision ayuda a que no se trate como posible *Churn* a usuarios que no iban a abandonar el servicio, lo que implicaría posibles ofertas innecesarias a usuarios que NO iban a abandonar el servicio, algo que también implica posible perdida de dinero, aunque no tan crítica como el abandono del usuario.
+
 14) La comparación, con las mismas métricas de un DummyClassifier, implementado en RapidMiner agregando el atributo por defecto en FALSE, nos da como resultado un *accuracy (average)* mayor al del árbol de decisión, pero evidentemente esto se debe al desbalanceo de las clases, sin embargo, las métricas clave para este problema, como lo son *class-recall* y *class-precision* tienen un rendimiento del 0%, como se puede observar en la *Figura 14.1*, lo que nos indica que va a predecir muy mal a los usuarios que si van a abandonar el servicio, como era de esperarse en este clasificador dummy.
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_14_1.png?raw=true)
-
 *Figure 14.1*
 
