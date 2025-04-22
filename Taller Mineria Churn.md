@@ -1,7 +1,7 @@
   
   
 
-# Taller Minería de Datos
+# Taller Minería de Datos - Rubén Dario Vargas Yandy
 
 ## Churn Dataset
 
