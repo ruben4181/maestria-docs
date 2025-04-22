@@ -217,3 +217,7 @@ Al balancear el conjunto de datos con un 50% y 50% para ambas clases, usando una
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_14_1.png?raw=true)
 
 *Figura 14.1*
+
+15) Lo primero que se destaca del módelo generado con *Rule induction* es que mejoró las métricas *class-precision* y *class-recall* en un 5%, aproximadamente, y quedaron todas por encima de 80% con respecto a los resultados obtenidos por el modelo de Árbol de decisión, como podemos apreciar en la *Figura 15.1*
+
+![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_15_1.png?raw=true)
