@@ -75,4 +75,12 @@ Lo primero que se puede concluir de este análisis exploratorio, es que el datas
 
 ### Árbol de decisiones:
 Se realiza el diseño de un árbol de decisiones, con las variables seleccionadas, sin normalizar, dado que este tipo de modelos no requiere que los valores estén normalizados y no afectan su desempeño. Fue entrenado con una muestra balanceada de 400 elementos por cada clase (*Churn* = TRUE, *Churn* = FALSE) Los resultados en las métricas de rendimiento del módelo están representados en la *Figura 12.1*, el árbol de decisión generado está en la *Figura 12.2* y los diseños están en las figuras 12.3 y 12.4.
-12) 
+
+12) ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_1.png?raw=true)
+*Figura 12.1: Métricas Árbol de decisiones*
+![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_2.png?raw=true)
+*Figura 12.2: Árbol de decisión generado en RapidMiner*
+![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_3.png?raw=true)
+*Figura 12.3: Diseño implementación RapidMiner Árbol de decisión*
+![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_4.png?raw=true)
+*Figure 12.4: Diseño subproceso Cross Validation - Árbol de decisiones*
