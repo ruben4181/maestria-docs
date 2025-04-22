@@ -27,12 +27,13 @@ Consecuentemente, se normalizan las columnas no categóricas, que vendrían sien
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_0_2.png?raw=true)
 *Figura 1.2*
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_0_3.png?raw=true)
+*Figura 1.3*
 2) De los campos posibles a ser eliminados, se tomó la decisión de solamente eliminar el campo teléfono, por el hecho de que es de origen arbitrario y no aporta información de la condición o de los hábitos de consumo del cliente. En su momento se considero eliminar variables correlacionadas directamente, como por ejemplo la cantidad de llamadas en el transcurso del día y/o el cargo por el uso de estos, sin embargo, no fueron eliminados porque se consideró que los usuarios podrían cambiarse de operador porque sus precios alcanzaban algún tope o que los usuarios que más llaman, en zonas donde la cobertura presenta algún tipo de problema por concurrencia, etc..., serían más notorios para usuarios más frecuentes, que para usuarios más casuales.
 3) Se seleccionan los atributos Churn e Intern Plan, además de la conversión de Churn, de nominal a numéricos, reemplazando TRUE por 1 y FALSE por 0, para después filtrar todo el dataset en las cuatro posibles combinaciones requeridas en este literal, que son las siguientes con sus respectivos resultados.
 * Inter Plan = 1 AND Churn = 1 (Usuario con plan internacional y que se cambió de operador).
 * Inter Plan = 1 AND Churn = 0 (Usuario con plan internacional que NO se cambió de operador)
 * Inter Plan = 0 AND Churn = 1 (Usuario sin plan internacional que se cambió de operador)
-* Inter Plan = 0 AND Churn = 0 (Usuario sin plan internacional que NO se cambió de operador.
+* Inter Plan = 0 AND Churn = 0 (Usuario sin plan internacional que NO se cambió de operador).
 **Diseño en RapidMiner:**
 El diseño del proceso cuenta con la selección de atributos, para no cargar el resultado de información innecesaria. Continua con el filtro por cada una de las condiciones anteriores, cuyas comparaciones dependían de si el usuario tenía o no plan internacional, así que se procede con el conteo de estas mismas según las condiciones expuestas anteriormente en este punto. Se termina por el renombre de los dos resultados para que la generación de las gráficas sean mucho más sencilla y se unen mediante un ID genérico para tener la información en una sola fila. El proceso se realiza dos veces, primero para Intern Plan = 1 y después Intern Plan = 0, el diseño es igual, excepto en la condición de los filtros y en el renombre de las variables. Este proceso se ilustra en la *Figura 3.1*.
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_3_1.png?raw=true)
