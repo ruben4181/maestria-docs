@@ -218,6 +218,12 @@ Al balancear el conjunto de datos con un 50% y 50% para ambas clases, usando una
 
 *Figura 14.1*
 
-15) Lo primero que se destaca del módelo generado con *Rule induction* es que mejoró las métricas *class-precision* y *class-recall* en un 5%, aproximadamente, y quedaron todas por encima de 80% con respecto a los resultados obtenidos por el modelo de Árbol de decisión, como podemos apreciar en la *Figura 15.1*
+15) Lo primero que se destaca del módelo generado con *Rule induction* es que mejoró las métricas *class-precision* y *class-recall* en un 5%, aproximadamente, y quedaron todas por encima de 80% con respecto a los resultados obtenidos por el modelo de Árbol de decisión, como podemos apreciar en la *Figura 15.1*, la primera conclusión es que, aunque toma más tiempo en ejecución (para este caso es irrisorio el tiempo gastado, pero se nota), lo que implica mayor complejidad en el modelo, la mejora fue sustancial en el grupo de personas que se consideran más importantes para la empresa: usuarios que piensan retirarse.
 
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_15_1.png?raw=true)
+*Figure 15.1*
+
+16) El modelo tiene un acurracy en promedio igual al del árbol de decisión y menor que el del *Dummy Classifier*, pero sus mejoras están en las métricas de *class-recall* y *class-precision*, lo que a su vez se traduce en que este módelo tiene mejor rendimiento para los propósitos de este caso de estudio: prevenir campañas de fidelización innecesarias y mitigar el cambio de usuarios a la competencia.
+
+17) Si bien, el accuracy sigue estando por debajo del Dummy Classifier, este módelo, entrenado con clases balanceadas, siempre va a tener un mejor rendimiento en lo que más interesa a la empresa que un Dummy Classifier.
+
