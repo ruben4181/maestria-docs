@@ -173,7 +173,7 @@ Lo primero que se puede concluir de este análisis exploratorio, es que el datas
 
   
 
-### Árbol de decisiones:
+### 2 Árbol de decisiones:
 
 Se realiza el diseño de un árbol de decisiones, con las variables seleccionadas, sin normalizar, dado que este tipo de modelos no requiere que los valores estén normalizados y no afectan su desempeño. Fue entrenado con una muestra balanceada de 400 elementos por cada clase (*Churn* = TRUE, *Churn* = FALSE) Los resultados en las métricas de rendimiento del módelo están representados en la *Figura 12.1*, el árbol de decisión generado está en la *Figura 12.2* y los diseños están en las figuras 12.3 y 12.4.
 
@@ -218,12 +218,24 @@ Al balancear el conjunto de datos con un 50% y 50% para ambas clases, usando una
 
 *Figura 14.1*
 
+### 3. Rule Induction
+
 15) Lo primero que se destaca del módelo generado con *Rule induction* es que mejoró las métricas *class-precision* y *class-recall* en un 5%, aproximadamente, y quedaron todas por encima de 80% con respecto a los resultados obtenidos por el modelo de Árbol de decisión, como podemos apreciar en la *Figura 15.1*, la primera conclusión es que, aunque toma más tiempo en ejecución (para este caso es irrisorio el tiempo gastado, pero se nota), lo que implica mayor complejidad en el modelo, la mejora fue sustancial en el grupo de personas que se consideran más importantes para la empresa: usuarios que piensan retirarse.
 
 ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_15_1.png?raw=true)
-*Figure 15.1*
+*Figura 15.1*
 
 16) El modelo tiene un acurracy en promedio igual al del árbol de decisión y menor que el del *Dummy Classifier*, pero sus mejoras están en las métricas de *class-recall* y *class-precision*, lo que a su vez se traduce en que este módelo tiene mejor rendimiento para los propósitos de este caso de estudio: prevenir campañas de fidelización innecesarias y mitigar el cambio de usuarios a la competencia.
 
 17) Si bien, el accuracy sigue estando por debajo del Dummy Classifier, este módelo, entrenado con clases balanceadas, siempre va a tener un mejor rendimiento en lo que más interesa a la empresa que un Dummy Classifier.
 
+### 4. Const-sensitive Learning
+
+18) En efecto, el *dataset* presenta algunos detalles importantes. Como se ha venido comentando en este documento existen dos posibles enfoques con respecto al costo: el costo en la promoción de campañas de fidelización y el costo en la perdida de usuarios. Ya se asumía en algunos casos, de forma especulativa, que el costo de perdida del ciente hacia la competencia era mayor que el de las promociones y, ahora teniendo este supuesto como mandatorio, el primer, y más relevante problema que tiene el *dataset* es el desbalanceo, puesto que la clase que más nos importa es, precisamente, la que menos muestras tiene dentro del conjunto de datos. El entrenamiento de modelos con clases desbalanceadas puede derivar, con bastante probabilidad de que ocurra, en que las clases con menos elementos sufran de una alta tasa de predicciones érroneas, es decir, que usuarios que se van a ir del operador, el modelo los clasifique como que no se van a ir.
+
+19) El problema expuesto en el punto 18 puede ser "evitado", en cuanto a la detección de clientes que probablemente se vayan de la compañia agregando más peso la categoría *Churn* para la etiqueta FALSE o bien, aunque no es lo que se recomienda, desbalancear deliberadamente el conjunto de entrenamiento para que la detección más relevante tenga una mejor precisión. Se opta por desbalancear las clases, favoreciendo a *Churn = TRUE* en la cantidad de muestras, para el entrenamiento de un modelo con el operador *Rule Induction* que fue el que mejor rendimiento tuvo en clases balanceadas.
+
+20) Como se puede apreciar en la *Figura 20.1* y con respecto al mejor modelo anterior, cuyas métricas están presentes en la *Figura 15.1*, este último modelo presentó una mejora de 8% en la sensibilidad, medida por la métrica *class-recall* y una mejora de 7% en la métrica de *class-precision* para la clase *Churn = TRUE*, ahora bien, su rendimiento para *Churn = FALSE* disminuyó, como era de esperarse, pero al ser el grupo de usuarios más importante, para detectar, el de aquellos que piensan abandonar el servicio e irse a la competencia esta perdida de precisión en la clase *Churn = FALSE* es asumible, por la premisa de que la perdida de clientes es mucho más costosa que la promoción de beneficios innecesariamente a usuarios que no se iban a marchar de la compañía.
+
+![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_15_1.png?raw=true)
+*Figura 20.1*
