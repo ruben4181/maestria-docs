@@ -179,8 +179,9 @@ Se realiza el diseño de un árbol de decisiones, con las variables seleccionada
 
   
 
-12) ![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_1.png?raw=true)
+12) 
 
+![enter image description here](https://github.com/ruben4181/maestria-docs/blob/main/mineria-datos-2025/figure_12_1.png?raw=true)
 *Figura 12.1: Métricas Árbol de decisiones*
 
   
